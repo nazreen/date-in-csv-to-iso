@@ -6,4 +6,4 @@ todo: accept dates in all formats
 How to use:
 1. Copy csv file to parse into `/data` folder under root folder. Name it `raw.csv`.
 2. Run 'npm start'.
-3. Locate the output at `/data/resul.csv`.
+3. Locate the output at `/data/result.csv`.
