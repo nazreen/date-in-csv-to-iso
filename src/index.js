@@ -1,11 +1,11 @@
 const fs = require('fs');
 var csv = require("fast-csv");
 
-const DATE_KEY='date'; // todo: set this in .env. use dotenv
+const DATE_KEY='source_date'; // todo: set this in .env. use dotenv
 
 !async function () {
     const stream = fs.createReadStream("data/raw.csv");
-    var writeStream = fs.createWriteStream("data/result.csv");
+    // var writeStream = fs.createWriteStream("data/result.json");
     const objectsArray = [];
     let counter = 0;
     csv
@@ -22,11 +22,12 @@ const DATE_KEY='date'; // todo: set this in .env. use dotenv
 
         })
         .on("end", function () {
-            csv
-                .write(
-                    objectsArray,
-                    { headers: true })
-                .pipe(writeStream);
+            // csv
+            //     .write(
+            //         objectsArray,
+            //         { headers: true })
+            //     .pipe(writeStream);
+            fs.writeFileSync('data/result.json', JSON.stringify(objectsArray)); 
             console.log("done", counter);
         });
 }();
